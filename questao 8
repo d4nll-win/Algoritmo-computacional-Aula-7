@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int ehPrimo(int n)
+{
+    int i;
+
+    if (n < 2)
+        return 0;
+
+    // Desafio: testa divisores so ate a raiz quadrada (i*i <= n), sem usar sqrt()
+    for (i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+            return 0;
+    }
+
+    return 1;
+}
+
+int main()
+{
+    int n;
+
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &n);
+
+    if (ehPrimo(n))
+        printf("%d eh primo\n", n);
+    else
+        printf("%d nao eh primo\n", n);
+
+    return 0;
+}
