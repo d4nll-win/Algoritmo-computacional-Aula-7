@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+#define ALUNOS 10
+
+float calcularMediaTurma(float notas[], int qtd)
+{
+    int i;
+    float soma = 0;
+
+    for (i = 0; i < qtd; i++)
+        soma += notas[i];
+
+    return soma / qtd;
+}
+
+float encontrarMaiorNota(float notas[], int qtd)
+{
+    int i;
+    float maior = notas[0];
+
+    for (i = 1; i < qtd; i++)
+    {
+        if (notas[i] > maior)
+            maior = notas[i];
+    }
+
+    return maior;
+}
+
+int contarAprovados(float notas[], int qtd)
+{
+    int i, aprovados = 0;
+
+    for (i = 0; i < qtd; i++)
+    {
+        if (notas[i] >= 7.0)
+            aprovados++;
+    }
+
+    return aprovados;
+}
+
+// So esta funcao imprime; as de calculo apenas retornam valores
+void exibirResultados(float media, float maior, int aprovados)
+{
+    printf("\n=== Resultados da turma ===\n");
+    printf("Media da turma: %.2f\n", media);
+    printf("Maior nota: %.2f\n", maior);
+    printf("Alunos aprovados (nota >= 7,0): %d\n", aprovados);
+}
+
+int main()
+{
+    float notas[ALUNOS];
+    int i;
+
+    for (i = 0; i < ALUNOS; i++)
+    {
+        printf("Nota final do aluno %d: ", i + 1);
+        scanf("%f", &notas[i]);
+    }
+
+    exibirResultados(calcularMediaTurma(notas, ALUNOS),
+                     encontrarMaiorNota(notas, ALUNOS),
+                     contarAprovados(notas, ALUNOS));
+
+    return 0;
+}
